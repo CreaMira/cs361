@@ -19,7 +19,18 @@
     </form>
 
     <!--repsonse data-->
+    <br>
     <span>City: </span><span id="city"></span>
+    <br>
+    <span>Weather: </span><span id="weather"></span>
+    <br>
+    <span>Temperature: </span><span id="temp"></span>
+    <br>
+    <span>Feels like Temperature: </span><span id="temp_fl"></span>
+    <br>
+    <span>Wind Speed: </span><span id="wind_speed"></span>
+    <br>
+    <span>Wind Degree: </span><span id="wind_degree"></span>
 
   </body>
 
@@ -42,7 +53,11 @@
          
          var response = JSON.parse(req.responseText);
          document.getElementById('city').textContent = response.name;
-
+         document.getElementById('weather').textContent = response.weather[0].description;
+         document.getElementById('temp').textContent = response.main.temp; //Kelvin
+         document.getElementById('temp_fl').textContent = response.main.feels_like; //Kelvin
+         document.getElementById('wind_speed').textContent = response.wind.speed; //meter/sec
+         document.getElementById('wind_degree').textContent = response.wind.deg; //meter/sec
           
         event.preventDefault();
         })
