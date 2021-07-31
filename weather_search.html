@@ -17,10 +17,35 @@
         <input type="submit" id="search" value = "Search">
 
     </form>
-    
+
+    <!--repsonse data-->
+    <span>City: </span><span id="city"></span>
+
   </body>
 
   <script>
+      var APIKey = "80ffaa5e9f1fdced49462be5dc381abc";
+      document.addEventListener('DOMContentLoaded', search_zip);
+      
+      function search_zip(){
+        document.getElementById('search').addEventListener('click', function(event){
+         var req = new XMLHttpRequest();
+         var call = {zipCode:null };
+         call.zipCode = document.getElementById('zipCode').value;
+          
+        if ( call.zipCode != "" ){
+            req.open("GET", "http://api.openweathermap.org/data/2.5/weather?zip="+ call.zipCode +"&appid=" + APIKey , false);
+        }      
+          
+         req.send(null);
+         console.log(JSON.parse(req.responseText));
+         
+         var response = JSON.parse(req.responseText);
+         document.getElementById('city').textContent = response.name;
 
+          
+        event.preventDefault();
+        })
+    }
   </script>
 </html>
