@@ -1,25 +1,38 @@
 <?php
+/*
+    Author: Nuocheng Shen
+    Couse:cs361
+ */
+
+  /* Header */
+  include ('includes/header.php');
+
+  /*get weather*/
   $APIKey = "80ffaa5e9f1fdced49462be5dc381abc";
-  /*check empty*/
+  
   if(array_key_exists("submit", $_GET)){
+    /*check empty*/
     if(!$_GET['zip']){
       $error = "Sorry, the input field is empty, please entry Zip Code";
     }
-
+    /*send requist*/
     if($_GET['zip']){
       $APIData = file_get_contents("http://api.openweathermap.org/data/2.5/weather?zip=".
       $_GET['zip']."&appid=".$APIKey);
 
+      /*get JSON*/
       $response = json_decode($APIData, true);
-
+      /*get weather information*/
       if($response['cod'] == 200){
         $city = $response['name'];
         $country = $response['sys']['country'];
         $temperature = $response['main']['temp'] - 273; //
         $weather = $response['weather']['0']['description'];
+        $wind = $response['wind']['speed'];
         
         $result = "<b>".$city.", ".$country.": </b>".$temperature."&deg;c <br>";
-        $result .= "<b>Weather Condition: </b>".$weather;
+        $result .= "<b>Weather Condition: </b>".$weather."<br>";
+        $result .= "<b>Wind Speed: </b>".$wind."meter/sec";
       }
       else{
         $error = "Sorry, the Zip Code is not vallied";
@@ -30,50 +43,6 @@
 
 ?>
 
-
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Weather Searcher</title>
-
-    <style>
-      body{
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
-        color: Black;
-        font-family: poppin, 'Times New Roman', Times, serif;
-      }
-
-      .searcher{
-        text-align: center;
-        justify-content: center;
-        align-items: center
-        width: 300px;
-      }
-
-      h1{
-        font-weight: 720;
-        margin-top: 50px;
-      }
-
-      input{
-        width: 400px;
-        padding: 5px;
-      }
-    </style>
-
-
-
-  </head>
   <body>
     <div class = "searcher">
       <h1>Weather Searcher</h1>
@@ -82,6 +51,7 @@
         <label for = "zip"> Enter Zip Code</lable>
         <p><input type = "text" name = "zip" id = "zip" placeholder = "Zip Code"></p>
         <button type = "submit" name = "submit" class = "btn btn-success">Search Now</button>
+        <a href="weather.php" class="btn btn-default">Cancel</a>
       </form>
 
       <br><br>
@@ -112,4 +82,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
-</html>
+
+<?php
+/*** Footer ***/
+include ('includes/footer.php');
