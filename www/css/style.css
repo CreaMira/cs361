@@ -1,12 +1,31 @@
-.searcher{
-  text-align: center;
-  justify-content: center;
-  align-items: center
-  width: 300px;
+/* styles of the work list table */
+table.weatherList {
+    width: 100%;
+    border-collapse: collapse;
+    font: 12px/18px Arial, Sans-serif;
+    margin: 5px 0;
+}
+
+table.weatherList th {
+    background-color: #e4f1fe;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+table.weatherList td {
+    border-bottom: 1px solid #ccc;
+    padding: 4px;
+    vertical-align: top;
 }
 
 
-input{
-  width: 400px;
-  padding: 5px;
+table.weatherList th.col1 {
+    width: 20px;
+}
+
+
+
+table.weatherList tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
