@@ -13,12 +13,17 @@
       $response = json_decode($APIData, true);
 
       if($response['cod'] == 200){
+        $city = $response['name'];
+        $country = $response['sys']['country'];
+        $temperature = $response['main']['temp'] - 273; //
         $weather = $response['weather']['0']['description'];
-
+        
+        $result = "<b>".$city.", ".$country.": </b>".$temperature."&deg;c <br>";
+        $result .= "<b>Weather Condition: </b>".$weather;
       }
-
-  
-
+      else{
+        $error = "Sorry, the Zip Code is not vallied";
+      }
     }
 
   }
@@ -84,9 +89,9 @@
       <div class = "result">
         <!--https://getbootstrap.com/docs/4.3/components/alerts/-->
         <?php
-          if($weather){
+          if($result){
             echo '<div class="alert alert-success" role="alert">
-            '. $weather.'
+            '. $result.'
           </div>';
           }
           if($error){
