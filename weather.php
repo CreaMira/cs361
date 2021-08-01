@@ -1,4 +1,27 @@
 <?php
+  $APIKey = "80ffaa5e9f1fdced49462be5dc381abc";
+  /*check empty*/
+  if(array_key_exists("submit", $_GET)){
+    if(!$_GET['zip']){
+      $error = "Sorry, the input field is empty, please entry Zip Code";
+    }
+
+    if($_GET['zip']){
+      $APIData = file_get_contents("http://api.openweathermap.org/data/2.5/weather?zip=".
+      $_GET['zip']."&appid=".$APIKey);
+
+      $response = json_decode($APIData, true);
+
+      if($response['cod'] == 200){
+        $weather = $response['weather']['0']['description'];
+
+      }
+
+  
+
+    }
+
+  }
 
 ?>
 
@@ -45,21 +68,38 @@
 
 
 
-
-
   </head>
   <body>
     <div class = "searcher">
       <h1>Weather Searcher</h1>
 
       <form action = "" method = "GET">
-        <label for = "city"> Enter Zip Code</lable>
-        <p><input type = "text" name = "text" id = "text" placeholder = "Zip Code"></p>
+        <label for = "zip"> Enter Zip Code</lable>
+        <p><input type = "text" name = "zip" id = "zip" placeholder = "Zip Code"></p>
         <button type = "submit" name = "submit" class = "btn btn-success">Search Now</button>
-                
-      </div>
       </form>
+
+      <br><br>
+
+      <div class = "result">
+        <!--https://getbootstrap.com/docs/4.3/components/alerts/-->
+        <?php
+          if($weather){
+            echo '<div class="alert alert-success" role="alert">
+            '. $weather.'
+          </div>';
+          }
+          if($error){
+            echo '<div class="alert alert-danger" role="alert">
+            '. $error.'
+          </div>';
+          }
+        ?>
+  
+      </div>
+
     </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
