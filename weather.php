@@ -7,13 +7,21 @@
   
   if(array_key_exists("submit", $_GET)){
     /*check empty*/
-    if(!$_GET['zip']){
-      $error = "Sorry, the input field is empty, please entry Zip Code";
+    if(!$_GET['zip'] && !$_GET['city'] ){
+      $error = "Sorry, the input field is empty, please entry Zip Code or City Name";
     }
-    /*send requist*/
-    if($_GET['zip']){
-      $APIData = file_get_contents("http://api.openweathermap.org/data/2.5/weather?zip=".
-      $_GET['zip']."&appid=".$APIKey);
+    /*send requist by zip*/
+    if($_GET['zip'] || $_GET['city']){
+      //zip code
+      if($_GET['zip']){
+        $APIData = file_get_contents("http://api.openweathermap.org/data/2.5/weather?zip=".
+        $_GET['zip']."&appid=".$APIKey);
+      }
+      //city name
+      else if ( $_GET['city']){
+        $APIData = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=".
+        $_GET['city']."&appid=".$APIKey);
+      }
 
       /*get JSON*/
       $response = json_decode($APIData, true);
@@ -38,19 +46,29 @@
         $result .= "<b>Wind Speed: </b>".$wind." meter/sec";
       }
       else{
-        $error = "Sorry, the Zip Code is not vallied";
+        $error = "Sorry, the Zip Code or City Name is not vallied";
       }
     }
+    
 
   }
 
 ?>
 
+
     <div class = "searcher">
-      <h1>Weather Searcher</h1>
+      <h2>Search the Weather</h2>
       <form action = "" method = "GET">
         <label for = "zip"> Enter Zip Code</lable>
         <p><input type = "text" name = "zip" id = "zip" placeholder = "Zip Code"></p>
+        <button type = "submit" name = "submit" class = "btn btn-success">Search Now</button>
+        <a href="weather.php" class="btn btn-default">Cancel</a>
+      </form>
+
+      <br><br>
+      <form action = "" method = "GET">
+        <label for = "city"> Enter City Name</lable>
+        <p><input type = "text" name = "city" id = "city" placeholder = "City Name"></p>
         <button type = "submit" name = "submit" class = "btn btn-success">Search Now</button>
         <a href="weather.php" class="btn btn-default">Cancel</a>
       </form>

@@ -16,6 +16,9 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <title>Weather Searcher</title>
     
@@ -33,7 +36,7 @@
       font-family: poppin, 'Times New Roman', Times, serif;
     }
     
-    h1{
+    h2{
       font-weight: 720;
       margin-top: 50px;
     }
@@ -57,10 +60,28 @@
     }
     
   </style>
+  
+  <body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="weather.php">Weather Collector</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="weather.php">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Search by Select<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="weather.php?city=corvallis&submit=#">Corvallis</a></li>
+          <li><a href="weather.php?city=Portland&submit=#">Portland</a></li>
+          <li><a href="weather.php?city=Salem&submit=#">Salem</a></li>
+        </ul>
+      </li>
+      <li><a href="listWeather.php">List Weather</a></li>
+    </ul>
+  </div>
+</nav>
+
     
   <body>
-   <div id="navbar">
-     <a href="listWeather.php">List Weather</a>
-     <b>|    |</b>
-     <a href="weather.php">Home</a>
-   </div>
+

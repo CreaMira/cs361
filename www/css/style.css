@@ -1,4 +1,15 @@
 /* styles of the work list table */
+div#wrapper {
+    text-align:left; /* reset text alignment */
+    width:980px; /* or a percentage, or whatever */
+    margin:0 auto; /* for the rest */
+    margin-top: 40px;
+    border: 1px solid gray;
+    border-radius: 15px 15px 0 0;
+    -moz-border-radius: 15px 0 15px 0;
+    -webkit-border-radius: 15px 0px 15px 0px;
+}
+
 table.weatherList {
     width: 100%;
     border-collapse: collapse;
