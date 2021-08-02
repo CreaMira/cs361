@@ -31,6 +31,8 @@ if(!$query) {
     exit;
 }
 
+$conn->close();
+
 echo "<script language='javascript'>";
 echo "     location='https://web.engr.oregonstate.edu/~shennu/cs361/listWeather.php' ; ";
 echo "</script>";

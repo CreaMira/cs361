@@ -33,7 +33,8 @@ if (!$query) {
         <th class="col1">Temperature</th>
         <th class="col1">WeatherD</th>
         <th class="col1">Wind</th>
-        <th class="col1">Date</th>        
+        <th class="col1">Date</th>
+        <th class="col1">Delete</th>      
     </tr>
     
     <!--database table -->
@@ -47,6 +48,7 @@ if (!$query) {
         echo "<td>", $row['WeatherD'], "</td>";
         echo "<td>", $row['Wind'], "</td>";
         echo "<td>", $row['Date'], "</td>";
+        echo "<td><a href='deleteWeather.php?id=", $row['id'], "'>", "Delete", "</a></td>";
         echo "</tr>";
     }
     ?>

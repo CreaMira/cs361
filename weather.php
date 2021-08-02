@@ -24,7 +24,10 @@
         $temperature = $response['main']['temp'] - 273; //
         $weather = $response['weather']['0']['description'];
         $wind = $response['wind']['speed'];
-        $date = "2021-08-02";
+        
+        date_default_timezone_set("PDT");
+        $sunRise = $response['sys']['sunrise'];
+        $date = date("Y-m-d H:i:s");
 
         if($weather){
           $weatherImage = "logo.png";
@@ -81,7 +84,6 @@
   
       </div>
       
-
     </div>
 
 
