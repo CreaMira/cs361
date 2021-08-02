@@ -50,6 +50,11 @@
       }
     }
     
+    //team informe
+    $todoList = '<br><br>Hi! XXX, Today is MM-DD-YYYY<br>';
+    $todoList .= 'Here is the event you need to do: <br>';
+    $todoList .= 'Nothing';
+    
 
   }
 
@@ -80,7 +85,7 @@
         <?php
           if($result){
             echo '<div class="alert alert-success" role="alert">
-            '. $result.'
+            '. $result.$todoList.'
           </div>';
           
             echo '<form action="addWeather.php" method = "POST">';
