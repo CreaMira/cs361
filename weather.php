@@ -24,6 +24,7 @@
         $temperature = $response['main']['temp'] - 273; //
         $weather = $response['weather']['0']['description'];
         $wind = $response['wind']['speed'];
+        $date = "2021-08-02";
 
         if($weather){
           $weatherImage = "logo.png";
@@ -60,6 +61,16 @@
             echo '<div class="alert alert-success" role="alert">
             '. $result.'
           </div>';
+          
+            echo '<form action="addWeather.php" method = "POST">';
+              echo '<input type = "hidden" name = "city" value = "'.$city.'">';
+              echo '<input type = "hidden" name = "country" value = "'.$country.'">';
+              echo '<input type = "hidden" name = "temperature" value = "'.$temperature.'">';
+              echo '<input type = "hidden" name = "weatherD" value = "'.$weather.'">';
+              echo '<input type = "hidden" name = "wind" value = "'.$wind.'">';
+              echo '<input type = "hidden" name = "date" value = "'.$date.'">';
+              echo '<button type = "submit"> Save Data</button>';
+            echo '</form>';
           }
           if($error){
             echo '<div class="alert alert-danger" role="alert">
@@ -69,6 +80,7 @@
         ?>
   
       </div>
+      
 
     </div>
 

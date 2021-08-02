@@ -1,8 +1,10 @@
 <!doctype html>
+<?php
 /*
     Author: Nuocheng Shen
     Couse:cs361
  */
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -58,10 +60,6 @@
     
   <body>
    <div id="navbar">
-     <a href='newworks.php'>Add Weather</a>
-     <b>|    |</b>
-     <a href="searchworks.php">Search Weather</a>
-     <b>|    |</b>
      <a href="listWeather.php">List Weather</a>
      <b>|    |</b>
      <a href="weather.php">Home</a>
