@@ -49,13 +49,6 @@
         $error = "Sorry, the Zip Code or City Name is not vallied";
       }
     }
-    
-    //team informe
-    $todoList = '<br><br>Hi! XXX, Today is MM-DD-YYYY<br>';
-    $todoList .= 'Here is the event you need to do: <br>';
-    $todoList .= 'Nothing';
-    
-
   }
 
 ?>
@@ -85,7 +78,7 @@
         <?php
           if($result){
             echo '<div class="alert alert-success" role="alert">
-            '. $result.$todoList.'
+            '. $result.'
           </div>';
           
             echo '<form action="addWeather.php" method = "POST">';
@@ -95,7 +88,8 @@
               echo '<input type = "hidden" name = "weatherD" value = "'.$weather.'">';
               echo '<input type = "hidden" name = "wind" value = "'.$wind.'">';
               echo '<input type = "hidden" name = "date" value = "'.$date.'">';
-              echo '<button type = "submit"> Save Data</button>';
+              echo '<button type = "submit" class="btn btn-success" > Save Data</button><br><br>';
+              echo '<a href="mapAPI.php?origin=97333" class="btn btn-default"> Calculate Distance from '.$city.'</a></td>';
             echo '</form>';
           }
           if($error){
