@@ -34,10 +34,9 @@ while ($row = $query->fetch_assoc()){
     'date' => $row['Date']
     
   );
-
   
 array_push($post_arr['data'], $post_item);
-  
+
 }
 
 echo json_encode($post_arr);

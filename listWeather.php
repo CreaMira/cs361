@@ -26,12 +26,12 @@ if (!$query) {
 </div>
 
 <table id="weatherList" class="weatherList">
-    <tr>
+    <tr align="center">
         <th class="col1">id</th>
         <th class="col1">City</th>
         <th class="col1">Country</th>
         <th class="col1">Temperature</th>
-        <th class="col1">WeatherD</th>
+        <th class="col1">Weather</th>
         <th class="col1">Wind</th>
         <th class="col1">Date</th>
         <th class="col1">Delete</th>      
@@ -40,7 +40,7 @@ if (!$query) {
     <!--database table -->
     <?php
     while ($row = $query->fetch_assoc()) {
-        echo "<tr>";
+        echo "<tr align='center'>";
         echo "<td>", $row['id'], "</td>";
         echo "<td>", $row['City'], "</td>";
         echo "<td>", $row['Country'], "</td>";

@@ -1,32 +1,24 @@
 /* styles of the work list table */
-div#wrapper {
-    text-align:left; /* reset text alignment */
-    width:980px; /* or a percentage, or whatever */
-    margin:0 auto; /* for the rest */
-    margin-top: 40px;
-    border: 1px solid gray;
-    border-radius: 15px 15px 0 0;
-    -moz-border-radius: 15px 0 15px 0;
-    -webkit-border-radius: 15px 0px 15px 0px;
-}
-
 table.weatherList {
-    width: 100%;
     border-collapse: collapse;
     font: 12px/18px Arial, Sans-serif;
-    margin: 5px 0;
+    margin: auto;
 }
 
 table.weatherList th {
     background-color: #e4f1fe;
     border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
     padding: 5px;
 }
 
 table.weatherList td {
     border-bottom: 1px solid #ccc;
-    padding: 4px;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    padding: 4px;    
     vertical-align: top;
 }
 
@@ -34,8 +26,6 @@ table.weatherList td {
 table.weatherList th.col1 {
     width: 20px;
 }
-
-
 
 table.weatherList tr:nth-child(even) {
     background-color: #f9f9f9;
